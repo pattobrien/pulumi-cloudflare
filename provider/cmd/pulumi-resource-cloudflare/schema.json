@@ -94440,6 +94440,10 @@
                 "state": {
                     "type": "string",
                     "description": "The state that the subscription is in.\nAvailable values: \"Trial\", \"Provisioned\", \"Paid\", \"AwaitingPayment\", \"Cancelled\", \"Failed\", \"Expired\".\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The Zone ID to use for this endpoint. Mutually exclusive with the Account ID."
                 }
             },
             "required": [
@@ -94463,6 +94467,10 @@
                 "ratePlan": {
                     "$ref": "#/types/cloudflare:index/AccountSubscriptionRatePlan:AccountSubscriptionRatePlan",
                     "description": "The rate plan applied to the subscription.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The Zone ID to use for this endpoint. Mutually exclusive with the Account ID."
                 }
             },
             "stateInputs": {
@@ -94499,6 +94507,10 @@
                     "state": {
                         "type": "string",
                         "description": "The state that the subscription is in.\nAvailable values: \"Trial\", \"Provisioned\", \"Paid\", \"AwaitingPayment\", \"Cancelled\", \"Failed\", \"Expired\".\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The Zone ID to use for this endpoint. Mutually exclusive with the Account ID."
                     }
                 },
                 "type": "object"

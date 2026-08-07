@@ -1,0 +1,27 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: pattobrien <12474318+pattobrien@users.noreply.github.com>
+Date: Fri, 7 Aug 2026 04:13:51 -0400
+Subject: [PATCH] fix(account_subscription): add missing zone_id attribute to
+ schema
+
+AccountSubscriptionModel declares ZoneID (tfsdk:"zone_id") but the
+resource schema had no zone_id attribute, causing a struct/object
+mismatch during ImportResourceState:
+  Struct defines fields not found in object: zone_id
+
+diff --git a/internal/services/account_subscription/schema.go b/internal/services/account_subscription/schema.go
+index 072bc4b8c..6bffbb01b 100644
+--- a/internal/services/account_subscription/schema.go
++++ b/internal/services/account_subscription/schema.go
+@@ -39,6 +39,11 @@ func ResourceSchema(ctx context.Context) schema.Schema {
+ 				Optional:      true,
+ 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
+ 			},
++			"zone_id": schema.StringAttribute{
++				Description:   "The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.",
++				Optional:      true,
++				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
++			},
+ 			"frequency": schema.StringAttribute{
+ 				Description: "How often the subscription is renewed automatically.\nAvailable values: \"weekly\", \"monthly\", \"quarterly\", \"yearly\".",
+ 				Optional:    true,

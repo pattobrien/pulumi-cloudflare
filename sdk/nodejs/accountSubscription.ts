@@ -101,6 +101,10 @@ export class AccountSubscription extends pulumi.CustomResource {
      * Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
+    /**
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     */
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a AccountSubscription resource with the given unique name, arguments, and options.
@@ -123,11 +127,13 @@ export class AccountSubscription extends pulumi.CustomResource {
             resourceInputs["price"] = state?.price;
             resourceInputs["ratePlan"] = state?.ratePlan;
             resourceInputs["state"] = state?.state;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as AccountSubscriptionArgs | undefined;
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["frequency"] = args?.frequency;
             resourceInputs["ratePlan"] = args?.ratePlan;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["currency"] = undefined /*out*/;
             resourceInputs["currentPeriodEnd"] = undefined /*out*/;
             resourceInputs["currentPeriodStart"] = undefined /*out*/;
@@ -177,6 +183,10 @@ export interface AccountSubscriptionState {
      * Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
      */
     state?: pulumi.Input<string | undefined>;
+    /**
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     */
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -196,4 +206,8 @@ export interface AccountSubscriptionArgs {
      * The rate plan applied to the subscription.
      */
     ratePlan?: pulumi.Input<inputs.AccountSubscriptionRatePlan | undefined>;
+    /**
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     */
+    zoneId?: pulumi.Input<string | undefined>;
 }
