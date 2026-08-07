@@ -30,6 +30,7 @@ export interface GetZeroTrustAccessPoliciesArgs {
      * Max items to fetch, default: 1000
      */
     maxItems?: number;
+    name?: string;
 }
 /**
  * A collection of values returned by getZeroTrustAccessPolicies.
@@ -43,6 +44,7 @@ export interface GetZeroTrustAccessPoliciesResult {
      * Max items to fetch, default: 1000
      */
     readonly maxItems?: number;
+    readonly name?: string;
     /**
      * The items returned by the data source
      */
@@ -78,5 +80,6 @@ export interface GetZeroTrustAccessPoliciesOutputArgs {
      * Max items to fetch, default: 1000
      */
     maxItems?: pulumi.Input<number | undefined>;
+    name?: pulumi.Input<string | undefined>;
 }
 //# sourceMappingURL=getZeroTrustAccessPolicies.d.ts.map

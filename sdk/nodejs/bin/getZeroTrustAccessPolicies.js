@@ -51,6 +51,7 @@ function getZeroTrustAccessPolicies(args, opts) {
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustAccessPolicies:getZeroTrustAccessPolicies", {
         "accountId": args.accountId,
         "maxItems": args.maxItems,
+        "name": args.name,
     }, opts);
 }
 exports.getZeroTrustAccessPolicies = getZeroTrustAccessPolicies;
@@ -77,6 +78,7 @@ function getZeroTrustAccessPoliciesOutput(args, opts) {
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustAccessPolicies:getZeroTrustAccessPolicies", {
         "accountId": args.accountId,
         "maxItems": args.maxItems,
+        "name": args.name,
     }, opts);
 }
 exports.getZeroTrustAccessPoliciesOutput = getZeroTrustAccessPoliciesOutput;
