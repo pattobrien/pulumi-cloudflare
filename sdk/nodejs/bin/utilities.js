@@ -75,7 +75,7 @@ function getVersion() {
 exports.getVersion = getVersion;
 /** @internal */
 function resourceOptsDefaults() {
-    return { version: getVersion() };
+    return { version: getVersion(), pluginDownloadURL: "github://api.github.com/pattobrien/pulumi-cloudflare" };
 }
 exports.resourceOptsDefaults = resourceOptsDefaults;
 /** @internal */

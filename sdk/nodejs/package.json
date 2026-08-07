@@ -23,6 +23,7 @@
     "pulumi": {
         "resource": true,
         "name": "cloudflare",
-        "version": "6.19.1-alpha.2"
+        "version": "6.19.1-alpha.2",
+        "server": "github://api.github.com/pattobrien/pulumi-cloudflare"
     }
 }

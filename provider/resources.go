@@ -67,15 +67,17 @@ func Provider() info.Provider {
 
 	// Create a Pulumi provider mapping
 	prov := info.Provider{
-		P:                       p,
-		Name:                    "cloudflare",
-		DisplayName:             "Cloudflare",
-		Description:             "A Pulumi package for creating and managing Cloudflare cloud resources.",
-		Keywords:                []string{"pulumi", "cloudflare"},
-		License:                 "Apache-2.0",
-		Homepage:                "https://pulumi.io",
-		GitHubOrg:               "cloudflare",
-		Repository:              "https://github.com/pulumi/pulumi-cloudflare",
+		P:           p,
+		Name:        "cloudflare",
+		DisplayName: "Cloudflare",
+		Description: "A Pulumi package for creating and managing Cloudflare cloud resources.",
+		Keywords:    []string{"pulumi", "cloudflare"},
+		License:     "Apache-2.0",
+		Homepage:    "https://pulumi.io",
+		GitHubOrg:   "cloudflare",
+		Repository:  "https://github.com/pulumi/pulumi-cloudflare",
+		// fork: plugin binaries ship as GitHub release assets, not get.pulumi.com
+		PluginDownloadURL:       "github://api.github.com/pattobrien/pulumi-cloudflare",
 		UpstreamRepoPath:        "./upstream",
 		Version:                 version.Version,
 		TFProviderModuleVersion: "v5",
