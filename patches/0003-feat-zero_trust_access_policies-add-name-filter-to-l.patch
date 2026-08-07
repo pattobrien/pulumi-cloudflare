@@ -1,0 +1,63 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: pattobrien <12474318+pattobrien@users.noreply.github.com>
+Date: Fri, 7 Aug 2026 06:40:17 -0400
+Subject: [PATCH] feat(zero_trust_access_policies): add name filter to list
+ data source
+
+The Cloudflare API supports ?name= on GET /accounts/{id}/access/policies
+but neither the OpenAPI spec nor cloudflare-go expose it. Adds an
+optional name attribute to the plural data source and injects it as a
+query param via option.WithQuery.
+
+diff --git a/internal/services/zero_trust_access_policy/list_data_source.go b/internal/services/zero_trust_access_policy/list_data_source.go
+index 08762ceee..91ddef672 100644
+--- a/internal/services/zero_trust_access_policy/list_data_source.go
++++ b/internal/services/zero_trust_access_policy/list_data_source.go
+@@ -7,6 +7,7 @@ import (
+ 	"fmt"
+ 
+ 	"github.com/cloudflare/cloudflare-go/v7"
++	"github.com/cloudflare/cloudflare-go/v7/option"
+ 	"github.com/cloudflare/terraform-provider-cloudflare/internal/apijson"
+ 	"github.com/cloudflare/terraform-provider-cloudflare/internal/customfield"
+ 	"github.com/hashicorp/terraform-plugin-framework/attr"
+@@ -67,7 +68,11 @@ func (d *ZeroTrustAccessPoliciesDataSource) Read(ctx context.Context, req dataso
+ 	if maxItems <= 0 {
+ 		maxItems = 1000
+ 	}
+-	page, err := d.client.ZeroTrust.Access.Policies.List(ctx, params)
++	opts := []option.RequestOption{}
++	if !data.Name.IsNull() {
++		opts = append(opts, option.WithQuery("name", data.Name.ValueString()))
++	}
++	page, err := d.client.ZeroTrust.Access.Policies.List(ctx, params, opts...)
+ 	if err != nil {
+ 		resp.Diagnostics.AddError("failed to make http request", err.Error())
+ 		return
+diff --git a/internal/services/zero_trust_access_policy/list_data_source_model.go b/internal/services/zero_trust_access_policy/list_data_source_model.go
+index 6a876a64c..00fcd79f5 100644
+--- a/internal/services/zero_trust_access_policy/list_data_source_model.go
++++ b/internal/services/zero_trust_access_policy/list_data_source_model.go
+@@ -19,6 +19,7 @@ type ZeroTrustAccessPoliciesResultListDataSourceEnvelope struct {
+ 
+ type ZeroTrustAccessPoliciesDataSourceModel struct {
+ 	AccountID types.String                                                               `tfsdk:"account_id" path:"account_id,optional"`
++	Name      types.String                                                               `tfsdk:"name" query:"name,optional"`
+ 	MaxItems  types.Int64                                                                `tfsdk:"max_items"`
+ 	Result    customfield.NestedObjectList[ZeroTrustAccessPoliciesResultDataSourceModel] `tfsdk:"result"`
+ }
+diff --git a/internal/services/zero_trust_access_policy/list_data_source_schema.go b/internal/services/zero_trust_access_policy/list_data_source_schema.go
+index 3ba43aefc..3b14998f0 100644
+--- a/internal/services/zero_trust_access_policy/list_data_source_schema.go
++++ b/internal/services/zero_trust_access_policy/list_data_source_schema.go
+@@ -33,6 +33,10 @@ func ListDataSourceSchema(ctx context.Context) schema.Schema {
+ 				Description: "Identifier.",
+ 				Optional:    true,
+ 			},
++			"name": schema.StringAttribute{
++				Description: "Filter by the name of the policy.",
++				Optional:    true,
++			},
+ 			"max_items": schema.Int64Attribute{
+ 				Description: "Max items to fetch, default: 1000",
+ 				Optional:    true,

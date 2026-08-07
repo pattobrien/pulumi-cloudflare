@@ -29,6 +29,7 @@ export function getZeroTrustAccessPolicies(args?: GetZeroTrustAccessPoliciesArgs
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustAccessPolicies:getZeroTrustAccessPolicies", {
         "accountId": args.accountId,
         "maxItems": args.maxItems,
+        "name": args.name,
     }, opts);
 }
 
@@ -44,6 +45,7 @@ export interface GetZeroTrustAccessPoliciesArgs {
      * Max items to fetch, default: 1000
      */
     maxItems?: number;
+    name?: string;
 }
 
 /**
@@ -58,6 +60,7 @@ export interface GetZeroTrustAccessPoliciesResult {
      * Max items to fetch, default: 1000
      */
     readonly maxItems?: number;
+    readonly name?: string;
     /**
      * The items returned by the data source
      */
@@ -86,6 +89,7 @@ export function getZeroTrustAccessPoliciesOutput(args?: GetZeroTrustAccessPolici
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustAccessPolicies:getZeroTrustAccessPolicies", {
         "accountId": args.accountId,
         "maxItems": args.maxItems,
+        "name": args.name,
     }, opts);
 }
 
@@ -101,4 +105,5 @@ export interface GetZeroTrustAccessPoliciesOutputArgs {
      * Max items to fetch, default: 1000
      */
     maxItems?: pulumi.Input<number | undefined>;
+    name?: pulumi.Input<string | undefined>;
 }

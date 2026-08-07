@@ -153686,6 +153686,9 @@
                     "maxItems": {
                         "type": "integer",
                         "description": "Max items to fetch, default: 1000\n"
+                    },
+                    "name": {
+                        "type": "string"
                     }
                 },
                 "type": "object"
@@ -153700,6 +153703,9 @@
                     "maxItems": {
                         "description": "Max items to fetch, default: 1000\n",
                         "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
                     },
                     "results": {
                         "description": "The items returned by the data source\n",
