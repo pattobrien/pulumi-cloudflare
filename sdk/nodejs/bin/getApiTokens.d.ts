@@ -1,0 +1,97 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as outputs from "./types/output";
+/**
+ * Accepted Permissions
+ *
+ * - `API Tokens Read`
+ * - `API Tokens Write`
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleApiTokens = cloudflare.getApiTokens({
+ *     direction: "desc",
+ * });
+ * ```
+ */
+export declare function getApiTokens(args?: GetApiTokensArgs, opts?: pulumi.InvokeOptions): Promise<GetApiTokensResult>;
+/**
+ * A collection of arguments for invoking getApiTokens.
+ */
+export interface GetApiTokensArgs {
+    /**
+     * Direction to order results.
+     * Available values: "asc", "desc".
+     */
+    direction?: string;
+    /**
+     * When true, includes recently-expired tokens in the response.
+     */
+    includeExpired?: boolean;
+    /**
+     * Max items to fetch, default: 1000
+     */
+    maxItems?: number;
+}
+/**
+ * A collection of values returned by getApiTokens.
+ */
+export interface GetApiTokensResult {
+    /**
+     * Direction to order results.
+     * Available values: "asc", "desc".
+     */
+    readonly direction?: string;
+    /**
+     * When true, includes recently-expired tokens in the response.
+     */
+    readonly includeExpired: boolean;
+    /**
+     * Max items to fetch, default: 1000
+     */
+    readonly maxItems?: number;
+    /**
+     * The items returned by the data source
+     */
+    readonly results: outputs.GetApiTokensResult[];
+}
+/**
+ * Accepted Permissions
+ *
+ * - `API Tokens Read`
+ * - `API Tokens Write`
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleApiTokens = cloudflare.getApiTokens({
+ *     direction: "desc",
+ * });
+ * ```
+ */
+export declare function getApiTokensOutput(args?: GetApiTokensOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApiTokensResult>;
+/**
+ * A collection of arguments for invoking getApiTokens.
+ */
+export interface GetApiTokensOutputArgs {
+    /**
+     * Direction to order results.
+     * Available values: "asc", "desc".
+     */
+    direction?: pulumi.Input<string | undefined>;
+    /**
+     * When true, includes recently-expired tokens in the response.
+     */
+    includeExpired?: pulumi.Input<boolean | undefined>;
+    /**
+     * Max items to fetch, default: 1000
+     */
+    maxItems?: pulumi.Input<number | undefined>;
+}
+//# sourceMappingURL=getApiTokens.d.ts.map

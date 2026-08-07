@@ -1,0 +1,137 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
+/**
+ * Accepted Permissions
+ *
+ * - `Cloudflare DEX Read`
+ * - `Cloudflare DEX Write`
+ * - `Zero Trust Read`
+ * - `Zero Trust Report`
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustDexTest = cloudflare.getZeroTrustDexTest({
+ *     accountId: "01a7362d577a6c3019a474fd6f485823",
+ *     dexTestId: "372e67954025e0ba6aaa6d586b9e0b59",
+ * });
+ * ```
+ */
+export declare function getZeroTrustDexTest(args?: GetZeroTrustDexTestArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDexTestResult>;
+/**
+ * A collection of arguments for invoking getZeroTrustDexTest.
+ */
+export interface GetZeroTrustDexTestArgs {
+    /**
+     * Unique identifier linked to an account.
+     */
+    accountId?: string;
+    /**
+     * The unique identifier for the test.
+     */
+    dexTestId?: string;
+    filter?: inputs.GetZeroTrustDexTestFilter;
+    /**
+     * DEX rules targeted by this test
+     */
+    targetPolicies?: inputs.GetZeroTrustDexTestTargetPolicy[];
+}
+/**
+ * A collection of values returned by getZeroTrustDexTest.
+ */
+export interface GetZeroTrustDexTestResult {
+    /**
+     * Unique identifier linked to an account.
+     */
+    readonly accountId?: string;
+    /**
+     * Date the test was created, in RFC 3339 format.
+     */
+    readonly created: string;
+    /**
+     * The configuration object which contains the details for the WARP client to conduct the test.
+     */
+    readonly data: outputs.GetZeroTrustDexTestData;
+    /**
+     * Additional details about the test.
+     */
+    readonly description: string;
+    /**
+     * The unique identifier for the test.
+     */
+    readonly dexTestId?: string;
+    /**
+     * Determines whether or not the test is active.
+     */
+    readonly enabled: boolean;
+    readonly filter?: outputs.GetZeroTrustDexTestFilter;
+    /**
+     * The unique identifier for the test.
+     */
+    readonly id: string;
+    /**
+     * How often the test will run.
+     */
+    readonly interval: string;
+    /**
+     * The name of the DEX test. Must be unique.
+     */
+    readonly name: string;
+    /**
+     * DEX rules targeted by this test
+     */
+    readonly targetPolicies: outputs.GetZeroTrustDexTestTargetPolicy[];
+    readonly targeted: boolean;
+    /**
+     * The unique identifier for the test.
+     */
+    readonly testId: string;
+    /**
+     * Date the test was last updated, in RFC 3339 format.
+     */
+    readonly updated: string;
+}
+/**
+ * Accepted Permissions
+ *
+ * - `Cloudflare DEX Read`
+ * - `Cloudflare DEX Write`
+ * - `Zero Trust Read`
+ * - `Zero Trust Report`
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustDexTest = cloudflare.getZeroTrustDexTest({
+ *     accountId: "01a7362d577a6c3019a474fd6f485823",
+ *     dexTestId: "372e67954025e0ba6aaa6d586b9e0b59",
+ * });
+ * ```
+ */
+export declare function getZeroTrustDexTestOutput(args?: GetZeroTrustDexTestOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDexTestResult>;
+/**
+ * A collection of arguments for invoking getZeroTrustDexTest.
+ */
+export interface GetZeroTrustDexTestOutputArgs {
+    /**
+     * Unique identifier linked to an account.
+     */
+    accountId?: pulumi.Input<string | undefined>;
+    /**
+     * The unique identifier for the test.
+     */
+    dexTestId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetZeroTrustDexTestFilterArgs | undefined>;
+    /**
+     * DEX rules targeted by this test
+     */
+    targetPolicies?: pulumi.Input<pulumi.Input<inputs.GetZeroTrustDexTestTargetPolicyArgs>[] | undefined>;
+}
+//# sourceMappingURL=getZeroTrustDexTest.d.ts.map

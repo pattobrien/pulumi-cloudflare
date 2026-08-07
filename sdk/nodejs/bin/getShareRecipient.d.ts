@@ -1,0 +1,116 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as outputs from "./types/output";
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleShareRecipient = cloudflare.getShareRecipient({
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     shareId: "3fd85f74b32742f1bff64a85009dda07",
+ *     recipientId: "3fd85f74b32742f1bff64a85009dda07",
+ *     includeResources: true,
+ * });
+ * ```
+ */
+export declare function getShareRecipient(args: GetShareRecipientArgs, opts?: pulumi.InvokeOptions): Promise<GetShareRecipientResult>;
+/**
+ * A collection of arguments for invoking getShareRecipient.
+ */
+export interface GetShareRecipientArgs {
+    /**
+     * Account identifier.
+     */
+    accountId: string;
+    /**
+     * Include resources in the response.
+     */
+    includeResources?: boolean;
+    /**
+     * Share Recipient identifier tag.
+     */
+    recipientId: string;
+    /**
+     * Share identifier tag.
+     */
+    shareId: string;
+}
+/**
+ * A collection of values returned by getShareRecipient.
+ */
+export interface GetShareRecipientResult {
+    /**
+     * Account identifier.
+     */
+    readonly accountId: string;
+    /**
+     * Share Recipient association status.
+     * Available values: "associating", "associated", "disassociating", "disassociated".
+     */
+    readonly associationStatus: string;
+    /**
+     * When the share was created.
+     */
+    readonly created: string;
+    /**
+     * Share Recipient identifier tag.
+     */
+    readonly id: string;
+    /**
+     * Include resources in the response.
+     */
+    readonly includeResources?: boolean;
+    /**
+     * When the share was modified.
+     */
+    readonly modified: string;
+    /**
+     * Share Recipient identifier tag.
+     */
+    readonly recipientId: string;
+    readonly resources: outputs.GetShareRecipientResource[];
+    /**
+     * Share identifier tag.
+     */
+    readonly shareId: string;
+}
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleShareRecipient = cloudflare.getShareRecipient({
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     shareId: "3fd85f74b32742f1bff64a85009dda07",
+ *     recipientId: "3fd85f74b32742f1bff64a85009dda07",
+ *     includeResources: true,
+ * });
+ * ```
+ */
+export declare function getShareRecipientOutput(args: GetShareRecipientOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetShareRecipientResult>;
+/**
+ * A collection of arguments for invoking getShareRecipient.
+ */
+export interface GetShareRecipientOutputArgs {
+    /**
+     * Account identifier.
+     */
+    accountId: pulumi.Input<string>;
+    /**
+     * Include resources in the response.
+     */
+    includeResources?: pulumi.Input<boolean | undefined>;
+    /**
+     * Share Recipient identifier tag.
+     */
+    recipientId: pulumi.Input<string>;
+    /**
+     * Share identifier tag.
+     */
+    shareId: pulumi.Input<string>;
+}
+//# sourceMappingURL=getShareRecipient.d.ts.map

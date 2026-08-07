@@ -1,0 +1,82 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as outputs from "./types/output";
+/**
+ * Accepted Permissions
+ *
+ * - `DLS: Read`
+ * - `DLS: Write`
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleDlsPrefixBindings = cloudflare.getDlsPrefixBindings({
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ * });
+ * ```
+ */
+export declare function getDlsPrefixBindings(args: GetDlsPrefixBindingsArgs, opts?: pulumi.InvokeOptions): Promise<GetDlsPrefixBindingsResult>;
+/**
+ * A collection of arguments for invoking getDlsPrefixBindings.
+ */
+export interface GetDlsPrefixBindingsArgs {
+    /**
+     * Identifier of a Cloudflare account.
+     */
+    accountId: string;
+    /**
+     * Max items to fetch, default: 1000
+     */
+    maxItems?: number;
+}
+/**
+ * A collection of values returned by getDlsPrefixBindings.
+ */
+export interface GetDlsPrefixBindingsResult {
+    /**
+     * Identifier of a Cloudflare account.
+     */
+    readonly accountId: string;
+    /**
+     * Max items to fetch, default: 1000
+     */
+    readonly maxItems?: number;
+    /**
+     * The items returned by the data source
+     */
+    readonly results: outputs.GetDlsPrefixBindingsResult[];
+}
+/**
+ * Accepted Permissions
+ *
+ * - `DLS: Read`
+ * - `DLS: Write`
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleDlsPrefixBindings = cloudflare.getDlsPrefixBindings({
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ * });
+ * ```
+ */
+export declare function getDlsPrefixBindingsOutput(args: GetDlsPrefixBindingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDlsPrefixBindingsResult>;
+/**
+ * A collection of arguments for invoking getDlsPrefixBindings.
+ */
+export interface GetDlsPrefixBindingsOutputArgs {
+    /**
+     * Identifier of a Cloudflare account.
+     */
+    accountId: pulumi.Input<string>;
+    /**
+     * Max items to fetch, default: 1000
+     */
+    maxItems?: pulumi.Input<number | undefined>;
+}
+//# sourceMappingURL=getDlsPrefixBindings.d.ts.map

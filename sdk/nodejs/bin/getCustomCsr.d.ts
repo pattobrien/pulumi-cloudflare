@@ -1,0 +1,155 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
+/**
+ * Accepted Permissions
+ *
+ * - `Account: SSL and Certificates Read`
+ * - `Account: SSL and Certificates Write`
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleCustomCsr = cloudflare.getCustomCsr({
+ *     customCsrId: "7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
+ *     accountId: "account_id",
+ *     zoneId: "zone_id",
+ * });
+ * ```
+ */
+export declare function getCustomCsr(args?: GetCustomCsrArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomCsrResult>;
+/**
+ * A collection of arguments for invoking getCustomCsr.
+ */
+export interface GetCustomCsrArgs {
+    /**
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+     */
+    accountId?: string;
+    /**
+     * Custom CSR identifier tag.
+     */
+    customCsrId?: string;
+    filter?: inputs.GetCustomCsrFilter;
+    /**
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     */
+    zoneId?: string;
+}
+/**
+ * A collection of values returned by getCustomCsr.
+ */
+export interface GetCustomCsrResult {
+    /**
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+     */
+    readonly accountId?: string;
+    /**
+     * Account identifier associated with this CSR.
+     */
+    readonly accountTag: string;
+    /**
+     * The common name (domain) for the CSR.
+     */
+    readonly commonName: string;
+    /**
+     * Two-letter ISO 3166-1 alpha-2 country code.
+     */
+    readonly country: string;
+    /**
+     * When the CSR was created.
+     */
+    readonly createdAt: string;
+    /**
+     * The PEM-encoded Certificate Signing Request.
+     */
+    readonly csr: string;
+    /**
+     * Custom CSR identifier tag.
+     */
+    readonly customCsrId?: string;
+    /**
+     * Optional description for the CSR.
+     */
+    readonly description: string;
+    readonly filter?: outputs.GetCustomCsrFilter;
+    /**
+     * Custom CSR identifier tag.
+     */
+    readonly id: string;
+    /**
+     * The key algorithm used to generate the CSR.
+     * Available values: "rsa2048", "p256v1".
+     */
+    readonly keyType: string;
+    /**
+     * City or locality name.
+     */
+    readonly locality: string;
+    /**
+     * Human-readable name for the CSR.
+     */
+    readonly name: string;
+    /**
+     * Organization name.
+     */
+    readonly organization: string;
+    /**
+     * Organizational unit name.
+     */
+    readonly organizationalUnit: string;
+    /**
+     * Subject Alternative Names included in the CSR.
+     */
+    readonly sans: string[];
+    /**
+     * State or province name.
+     */
+    readonly state: string;
+    /**
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     */
+    readonly zoneId?: string;
+}
+/**
+ * Accepted Permissions
+ *
+ * - `Account: SSL and Certificates Read`
+ * - `Account: SSL and Certificates Write`
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleCustomCsr = cloudflare.getCustomCsr({
+ *     customCsrId: "7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
+ *     accountId: "account_id",
+ *     zoneId: "zone_id",
+ * });
+ * ```
+ */
+export declare function getCustomCsrOutput(args?: GetCustomCsrOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomCsrResult>;
+/**
+ * A collection of arguments for invoking getCustomCsr.
+ */
+export interface GetCustomCsrOutputArgs {
+    /**
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+     */
+    accountId?: pulumi.Input<string | undefined>;
+    /**
+     * Custom CSR identifier tag.
+     */
+    customCsrId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetCustomCsrFilterArgs | undefined>;
+    /**
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     */
+    zoneId?: pulumi.Input<string | undefined>;
+}
+//# sourceMappingURL=getCustomCsr.d.ts.map

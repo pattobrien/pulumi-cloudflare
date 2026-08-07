@@ -1,0 +1,112 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as outputs from "./types/output";
+/**
+ * Accepted Permissions
+ *
+ * - `Billing Read`
+ * - `Billing Write`
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleAccountSubscription = cloudflare.getAccountSubscription({
+ *     accountId: "account_id",
+ * });
+ * ```
+ */
+export declare function getAccountSubscription(args?: GetAccountSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountSubscriptionResult>;
+/**
+ * A collection of arguments for invoking getAccountSubscription.
+ */
+export interface GetAccountSubscriptionArgs {
+    /**
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+     */
+    accountId?: string;
+    /**
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     */
+    zoneId?: string;
+}
+/**
+ * A collection of values returned by getAccountSubscription.
+ */
+export interface GetAccountSubscriptionResult {
+    /**
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+     */
+    readonly accountId?: string;
+    /**
+     * The monetary unit in which pricing information is displayed.
+     */
+    readonly currency: string;
+    /**
+     * The end of the current period and also when the next billing is due.
+     */
+    readonly currentPeriodEnd: string;
+    /**
+     * When the current billing period started. May match initial*period*start if this is the first period.
+     */
+    readonly currentPeriodStart: string;
+    /**
+     * How often the subscription is renewed automatically.
+     * Available values: "weekly", "monthly", "quarterly", "yearly".
+     */
+    readonly frequency: string;
+    /**
+     * Subscription identifier tag.
+     */
+    readonly id: string;
+    /**
+     * The price of the subscription that will be billed, in US dollars.
+     */
+    readonly price: number;
+    /**
+     * The rate plan applied to the subscription.
+     */
+    readonly ratePlan: outputs.GetAccountSubscriptionRatePlan;
+    /**
+     * The state that the subscription is in.
+     * Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
+     */
+    readonly state: string;
+    /**
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     */
+    readonly zoneId?: string;
+}
+/**
+ * Accepted Permissions
+ *
+ * - `Billing Read`
+ * - `Billing Write`
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleAccountSubscription = cloudflare.getAccountSubscription({
+ *     accountId: "account_id",
+ * });
+ * ```
+ */
+export declare function getAccountSubscriptionOutput(args?: GetAccountSubscriptionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountSubscriptionResult>;
+/**
+ * A collection of arguments for invoking getAccountSubscription.
+ */
+export interface GetAccountSubscriptionOutputArgs {
+    /**
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+     */
+    accountId?: pulumi.Input<string | undefined>;
+    /**
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     */
+    zoneId?: pulumi.Input<string | undefined>;
+}
+//# sourceMappingURL=getAccountSubscription.d.ts.map
